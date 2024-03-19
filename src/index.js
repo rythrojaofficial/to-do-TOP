@@ -1,4 +1,5 @@
 import { Bullet, Task, Section, Project } from "./hierarchy";
+import './styles/styles.css';
 
 let project1 = new Project('my tasks');
     let section1 = new Section('things to do today');

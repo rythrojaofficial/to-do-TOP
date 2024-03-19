@@ -17,6 +17,7 @@
 .complete{
     opacity: 50%;
 }
-.incomplete{
-    
+
+body{
+    background-color: black;
 }
