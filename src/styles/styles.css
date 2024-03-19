@@ -1,0 +1,22 @@
+.section{
+    color: blue;
+}
+
+.project{
+ color: orange
+}
+
+.task{
+ color: white
+}
+
+.no-hierarchy{
+ color: red
+}
+
+.complete{
+    opacity: 50%;
+}
+.incomplete{
+    
+}
