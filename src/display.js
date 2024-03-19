@@ -1,16 +1,21 @@
 export function htmlElementsFrom(someArray){
     let div = document.createElement('div');
-        for (let i = 0; i < someArray.length; i++){
-            let element = document.createElement('div');
-                element.textContent = someArray[i].title;
-
-                assignClass(element,
-                    [someArray[i].hierarchy, someArray[i].iscomplete]
-                    );
-                appendElement(element, document.querySelector('body'))
-            
-        }
+        someArray.forEach((e) => {
+            createHtmlElement(e);
+        });
 }
+
+export function createHtmlElement(someElement){
+    let element = document.createElement('div');
+        element.textContent = someElement.title;
+
+        assignClass(element, 
+            [someElement.hierarchy,
+            someElement.iscomplete
+            ])
+        appendElement(element, document.querySelector('body'));
+}
+
 
 function assignClass(htmlItem, propertyArray){
     for (let i = 0; i < propertyArray.length; i++){

@@ -1,11 +1,11 @@
-import { htmlElementsFrom } from "./display";
+import { htmlElementsFrom, createHtmlElement } from "./display";
 
 const rr = 'something is wrong. . .'
 
 export class Bullet{
-    constructor(title, belongsToParent = 'none'){
+    constructor(title, belongsToParent = 'no-parent'){
         this.title = title;
-        this.hierarchy = 'none';
+        this.hierarchy = 'no-hierarchy';
         this.belongsToParent = belongsToParent;
     }
     // methods
@@ -37,6 +37,8 @@ export class Bullet{
     }
     display(){
         console.table(this);
+        createHtmlElement(this);
+
     }
 
 

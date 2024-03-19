@@ -3,17 +3,13 @@ import './styles/styles.css';
 
 let project1 = new Project('my tasks');
     let section1 = new Section('things to do today');
+    let task1 = new Task('wipe ass');
+        task1.editIsComplete();
+    let task2 = new Task('wash hands');
+    project1.addExistingTask(task1);
+    section1.addExistingTask(task2);
     project1.addExistingSection(section1);
+    project1.display();
+    project1.displayArray();
+    section1.displayArray();
 
-let task1 = new Task('wipe ass');
-project1.displayArray();
-section1.delete();
-let task2 = new Task('wash hands');
-section1.addExistingTask(task2);
-
-
-section1.addExistingTask(task1);
-section1.displayArray();
-
-task1.editIsComplete();
-section1.displayArray();
