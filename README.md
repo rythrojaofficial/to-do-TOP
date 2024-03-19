@@ -55,7 +55,7 @@ to do list using local storage for The Odin Project
             + editTitle
             + editIsMinimized
             + addTask
-            + deleteSection
+            + delete
             + display
 
 + taskArray is an array that contains task objects
@@ -68,7 +68,7 @@ to do list using local storage for The Odin Project
             + editTitle
             + editBelongsToSection
             + editIsComplete
-            + deleteTask
+            + delete
             + display
 
 
