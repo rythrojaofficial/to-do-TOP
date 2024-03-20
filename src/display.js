@@ -1,3 +1,6 @@
+import { HtmlElement } from "./htmlElement";
+
+
 export function htmlElementsFrom(someArray){
     let div = document.createElement('div');
         someArray.forEach((e) => {
@@ -5,27 +8,23 @@ export function htmlElementsFrom(someArray){
         });
 }
 
-export function createHtmlElement(someElement){
-    let element = document.createElement('div');
-        element.textContent = someElement.title;
+export function createHtmlElement(someBulletObject){
 
-        assignClass(element, 
-            [someElement.hierarchy,
-            someElement.iscomplete
-            ])
-        appendElement(element, document.querySelector('body'));
-}
+    let wrapper = new HtmlElement('div', document.querySelector('body'));
+    let text = new HtmlElement('div', wrapper.element,
+        {}, someBulletObject.title);
 
+    let properties = [someBulletObject.hierarchy,
+            someBulletObject.iscomplete];
 
-function assignClass(htmlItem, propertyArray){
-    for (let i = 0; i < propertyArray.length; i++){
-        if (propertyArray[i]){
-            htmlItem.classList.add(propertyArray[i])
+        assignClass(wrapper.element, properties)
+        
+        
+    function assignClass(htmlItem, propertyArray){
+        for (let i = 0; i < propertyArray.length; i++){
+            if (propertyArray[i]){
+                htmlItem.classList.add(propertyArray[i])
+            }
         }
     }
-   
-}
-
-function appendElement(elementToAppend, parentElement){
-    parentElement.appendChild(elementToAppend);
 }

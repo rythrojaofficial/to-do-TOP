@@ -1,5 +1,11 @@
 import { Bullet, Task, Section, Project } from "./hierarchy";
+import { inputAddTask } from "./inputAddTask";
 import './styles/styles.css';
+
+
+
+
+inputAddTask(document.querySelector('body'));
 
 let project1 = new Project('my tasks');
     let section1 = new Section('things to do today');
