@@ -62,7 +62,7 @@ export class SelectElement{
     }
 
     addProperties(element, object){
-        
+        // add {propertyName: property} to element
         for (let property in object){
             element.setAttribute(`${property}`, object[property]);
         }
@@ -132,4 +132,43 @@ export class RadioElement {
         let newBr = new HtmlElement('br',this.parent)
     }
 
+}
+export class ButtonElement{
+    constructor(parent, clickfunction = '', propertiesObject = {}, content = ''){
+        this.element = '';
+        this.type = 'button';
+        this.parent = parent;
+        this.properties = propertiesObject;
+        this.content = content;
+        this.clickfunction = clickfunction
+        this.add()
+    }
+
+    add(){
+        let newElement = document.createElement(this.type);
+        if (this.clickfunction !== ''){
+            newElement.addEventListener('click', this.clickfunction);
+        }
+        if (JSON.stringify(this.properties !== '{}')) {
+            this.addProperties(newElement, this.properties);
+        } 
+        if (this.content !== ''){
+            newElement.textContent = this.content;
+        }
+        
+        if (this.parent){
+            this.parent.appendChild(newElement);
+        }
+        this.element = newElement;
+        
+    }
+
+    addProperties(element, object){
+        
+        for (let property in object){
+            element.setAttribute(`${property}`, object[property]);
+        }
+
+
+    }
 }

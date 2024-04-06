@@ -1,12 +1,12 @@
-import { htmlElementsFrom, createHtmlElement } from "./display";
+import { htmlElementsFrom, createHtmlElement } from "./dom/display";
 
 const rr = 'something is wrong. . .'
 
 export class Bullet{
-    constructor(title, belongsToParent = 'no-parent'){
+    constructor(title, parent = 'no-parent'){
         this.title = title;
         this.hierarchy = 'no-hierarchy';
-        this.belongsToParent = belongsToParent;
+        this.parent = parent;
     }
     // methods
     editTitle(newTitle){
@@ -28,7 +28,7 @@ export class Bullet{
     }
 
     changeParent(newParent){
-        this.belongsToParent = newParent;
+        this.parent = newParent;
     }
 
     delete(){
@@ -45,16 +45,16 @@ export class Bullet{
 }
 
 export class Task extends Bullet{
-    constructor(title, belongsToParent){
-        super(title, belongsToParent);
+    constructor(title, parent){
+        super(title, parent);
         this.hierarchy = 'task';
         this.isComplete = 'incomplete';
     }
 }
 
 export class Subtask extends Task{
-    constructor(title, belongsToParent){
-        super(title, belongsToParent);
+    constructor(title, parent){
+        super(title, parent);
         this.hierarchy = 'subtask';
         this.isComplete = 'incomplete';
     }
@@ -63,8 +63,8 @@ export class Subtask extends Task{
 
 
 export class Section extends Bullet{
-    constructor(title, belongsToParent){
-        super(title, belongsToParent);
+    constructor(title, parent){
+        super(title, parent);
         this.hierarchy = 'section';
         this.taskArray = [];
     }
@@ -80,8 +80,8 @@ export class Section extends Bullet{
 }
 
 export class Project extends Bullet{
-    constructor(title, belongsToParent){
-        super(title, belongsToParent);
+    constructor(title, parent){
+        super(title, parent);
         this.hierarchy = 'project';
         this.taskArray = [];
         this.sectionArray = [];

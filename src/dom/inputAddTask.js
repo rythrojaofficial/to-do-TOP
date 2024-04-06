@@ -1,4 +1,6 @@
-import { HtmlElement } from "./htmlElement";
+import { ButtonElement, HtmlElement } from "./htmlElement";
+import { Task, Section } from "../hierarchy";
+import { section1 } from "..";
 
 export function inputAddTask(elementToAppendTo){
     let wrapper = new HtmlElement('div', 
@@ -34,10 +36,22 @@ export function inputAddTask(elementToAppendTo){
     let inputName = new HtmlElement('input', wrapper.element,
         {
             type: 'text',
-            placeholder: 'Name',
+            placeholder: 'Name'
         });
     let details = new HtmlElement('textarea', wrapper.element,
         { placeholder:'details' });
+
+    let newItemButton = new ButtonElement(wrapper.element,
+        newItemButtonFunction,
+        {},
+        'add new');
+    function newItemButtonFunction(){
+        // determine whether you're creating a task or a section
+        // for now its just always a task with name, no details
+        let newTask = new Task(inputName.element.value);
+        newTask.display();
+        inputName.element.value = ''
+    }
 }
 
 
