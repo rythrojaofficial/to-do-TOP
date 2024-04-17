@@ -6,9 +6,8 @@ import './styles/styles.css';
 
 
 inputAddTask(document.querySelector('body'));
-console.log('hello')
 let project1 = new Project('my tasks');
-    let section1 = new Section('things to do today');
+    export let section1 = new Section('things to do today');
     let task1 = new Task('wipe ass');
         task1.editIsComplete();
     let task2 = new Task('wash hands');

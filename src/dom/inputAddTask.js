@@ -48,10 +48,39 @@ export function inputAddTask(elementToAppendTo){
     function newItemButtonFunction(){
         // determine whether you're creating a task or a section
         // for now its just always a task with name, no details
-        let newTask = new Task(inputName.element.value);
-        newTask.display();
-        inputName.element.value = ''
+        switch(checkTaskSection()){
+            case 'task':
+                let newTask = new Task(inputName.element.value);
+                newTask.display();
+                inputName.element.value = '';
+                // reset input box
+                break;
+            case 'section':
+                let newSection = new Section(inputName.element.value);
+                newSection.display();
+                inputName.element.value = '';
+                break;
+            default:
+                console.log('nothing selected');
+                break;
+        };
+        
+        
+        
+        
     }
+}
+
+function checkTaskSection(){
+    let whatsChecked = false;
+ 
+    if (document.getElementById('radio-task').checked){
+        whatsChecked = 'task'
+    }else if(document.getElementById('radio-section').checked){
+        whatsChecked = 'section'
+    }
+    
+    return whatsChecked
 }
 
 
