@@ -19,6 +19,7 @@ export function inputAddTask(elementToAppendTo){
             id:'radio-task',
             value: 'task'
         });
+        radioTask.element.addEventListener('click', openSectionDetails)
     let radioTaskLabel = new HtmlElement('label', radioTaskWrapper.element,
         { for:'task' }, 'Task');
     let radioSectionWrapper = new HtmlElement('div', fieldset.element);
@@ -29,6 +30,7 @@ export function inputAddTask(elementToAppendTo){
             id: 'radio-section',
             value: 'section'
         });
+        radioSection.element.addEventListener('click', openSectionDetails)
     let radioSectionLabel = new HtmlElement('label', radioSectionWrapper.element,
         { for: 'section' }, 'Section');
 
@@ -38,8 +40,22 @@ export function inputAddTask(elementToAppendTo){
             type: 'text',
             placeholder: 'Name'
         });
-    let details = new HtmlElement('textarea', wrapper.element,
-        { placeholder:'details' });
+
+    let detailsWrapper = new HtmlElement('div', wrapper.element,
+        {
+            id: 'details-wrapper',
+            style: 'display: none'
+        })
+    let details = new HtmlElement('textarea', detailsWrapper.element,
+        { 
+            placeholder:'details',
+            name: 'input-details',
+            id: 'input-details'
+        });
+    let hideDetailsButton = new ButtonElement(detailsWrapper.element, ()=> document.getElementById('details-wrapper').style.display = 'none',
+            {}, 'hide details')
+        // details.element.addEventListener('change', openSectionDetails);
+
 
     let newItemButton = new ButtonElement(wrapper.element,
         newItemButtonFunction,
@@ -82,6 +98,31 @@ function checkTaskSection(){
     
     return whatsChecked
 }
+
+function openSectionDetails(){
+    let sectionRadio = document.getElementById('radio-section');
+    let taskRadio = document.getElementById('radio-task');
+    let detailsSection = document.getElementById('details-wrapper');
+    switch ( true ){
+        case sectionRadio.checked:
+            detailsSection.style.display = 'block';
+            break;
+        case taskRadio.checked:
+            detailsSection.style.display = 'block';
+            break;
+        default:
+            detailsSection.style.display = 'none'
+            break;
+            
+    }   
+        
+
+        
+    }
+    // if (document.getElementById('radio-section').checked){
+    //     document.getElementById('input-details').style.display = 'block'
+    // }
+
 
 
 
